@@ -1,0 +1,42 @@
+﻿@model CartVM
+
+@if (Model.Cart.CartLines.Count == 0)
+{
+    <h2 class="badge badge-danger" >Sepetinizde ürün yoktur.</h2>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ürün Adı</th>
+                <th>Açıklama</th>
+                <th>Fiyat</th>
+                <th>Stok Adedi</th>
+                <th>Satış Adedi</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Cart.CartLines)
+            {
+                <tr>
+                    <td>@item.Product.ProductId</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Product.QuantityPerUnit</td>
+                    <td>@item.Product.UnitPrice</td>
+                    <td>@item.Product.UnitsInStock</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        <a href="/cart/RemoveFromCart/@item.Product.ProductId" class="btn-sm btn-danger">Sil</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+

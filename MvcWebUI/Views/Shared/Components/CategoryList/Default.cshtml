@@ -1,0 +1,28 @@
+﻿@model CategoryVM
+@{ 
+    Layout = null;
+    var css = "list-group-item";
+}
+<h2>Category List</h2>
+<div class="list-group">
+    @if (Model.CurrentCategory == 0)
+    {
+        css += " active";
+    }
+
+    <a href="/product/index" class="@css">Tüm Ürünler</a>
+
+    @foreach (var item in Model.Categories)
+    {
+        if (Model.CurrentCategory == item.CategoryId)
+        {
+            css += " active";
+        }
+        else
+        {
+            css = "list-group-item";
+        }
+
+        <a href="/product/index?category=@item.CategoryId" class="@css">@item.CategoryName</a>
+    }
+</div>

@@ -1,0 +1,22 @@
+﻿@model ProductVM
+
+    <h2>Ürün Listesi</h2>
+<table class="table table-responsive">
+    <thead>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.QuantityPerUnit</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+            <td><a class="btn btn-sm btn-success" href="/Cart/AddToCart/@item.ProductId">Sepete Ekle</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
